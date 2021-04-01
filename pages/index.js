@@ -1,11 +1,11 @@
 export default function Home({ photos }) {
   return (
     <div className="p-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="gap-10 col-count-1 md:col-count-2 lg:col-count-3" style={{ WebkitBackfaceVisibility: "hidden", WebkitColumnBreakInside: "avoid" }}>
         {photos.map(
           (photo) =>
             console.log(photo) || (
-              <Image url={photo.file.formats.large.url} key={photo.id} />
+              <Image url={photo.file.url} key={photo.id} />
             )
         )}
       </div>
@@ -15,11 +15,11 @@ export default function Home({ photos }) {
 
 function Image({ url }) {
   return (
-    <div className="">
+    <div className="pb-10">
       {/* image itself */}
-      <div className="group relative">
+      <div className="relative group">
         {/* image shadow */}
-        <div className="absolute h-full w-full -right-3 -bottom-3 bg-black rounded-lg transform group-hover:-translate-x-2 group-hover:-translate-y-2 transition duration-200"></div>
+        <div className="absolute w-full h-full transition duration-200 transform bg-black rounded-lg -right-3 -bottom-3 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
 
         <img
           src={`http://localhost:1337${url}`}
